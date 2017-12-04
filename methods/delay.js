@@ -1,13 +1,10 @@
 function delay(duration) {
   // Do magic with `new Promise` and `setTimeout`
-  return new Promise((succeed, fail) => {
+  return new Promise((succeed) => {
     // We do our work, which accepts a callback function
     setTimeout(
       // The function that is called after a timeout of `duration`
-      () => {
-        // Can’t fail, so just call succeed/resolve
-        succeed()
-      },
+      succeed,
       // Tell setTimeout how long to wait for
       duration
     )
