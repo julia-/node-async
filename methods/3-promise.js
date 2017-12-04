@@ -1,19 +1,22 @@
 const FS = require('fs');
+const Util = require('util');
 
-function writeFilePromise(path, content) {
-  const promise = new Promise((resolve, reject) => {
-    FS.writeFile(path, content, (error) => {
-      if (error) {
-        // Failure
-        reject(error)
-      } else {
-        // Success
-        resolve()
-      }
-    })
-  })
-  return promise
-};
+const writeFilePromise = Util.promisify(FS.writeFile);
+
+// function writeFilePromise(path, content) {
+//   const promise = new Promise((resolve, reject) => {
+//     FS.writeFile(path, content, (error) => {
+//       if (error) {
+//         // Failure
+//         reject(error)
+//       } else {
+//         // Success
+//         resolve()
+//       }
+//     })
+//   })
+//   return promise
+// };
 
 function writeTimestamp(filePath) {
   const date = new Date();
